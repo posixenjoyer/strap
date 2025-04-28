@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+packages=(
+	base-devel
+	cmake
+	ninja
+	libuv
+	libluv
+	libutf8proc
+	lua
+	luajit
+	lua-lpeg
+	tree-sitter
+	ripgrep
+	git
+	go
+	python3
+	gettext
+)
+
+for package in ${packages[@]};do
+	install="$install $package"
+done
+
+echo "Installing: $install"
+
+if sudo pacman -Syu $install; then
+	echo "[devenv] Setup failed.  Error Code: $?"
+fi

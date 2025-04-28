@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ ! -d $HOME/build ]]; then
+	mkdir -p $HOME/build
+fi
+
+if [[ ! -d $HOME/build/neovim-0.11 ]]; then
+	git clone -b release-0.11 https://github.com/neovim/neovim.git $HOME/build/neovim-0.11
+fi
+
+cd $HOME/build/neovim-0.11
+
+make clean
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
+sudo make install

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Setup some convenience variables.
+SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+filter="$1"
+dry="0"
+
+while [[ $# > 0 ]]; do
+	if [[ $1 == "--dry" ]]; then
+		dry="1"
+	else
+		filter="$1"
+	fi
+	shift
+done
+
+log() {
+	if [[ $dry == "1" ]]; then
+		echo "[DRY RUN]: $@"
+	else
+		echo "$@"
+	fi
+}
+
+execute() {
+	log "execute $@"
+	echo "Dry: $dry"
+	if [[ $dry == "1" ]]; then
+		echo "[execute] We're going in dry"
+		return
+	fi
+
+	"$@"
+}
+
+
+log "$SRC_DIR -- $filter"
+
+cd $SRC_DIR
+
+straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
+
+for strap in $straps; do
+	if echo "$strap" | grep -qv "$filter"; then
+		log "Not running: $strap"
+		continue
+	fi
+	execute ./$strap
+done
