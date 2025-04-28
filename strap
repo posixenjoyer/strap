@@ -39,11 +39,40 @@ log "$SRC_DIR -- $filter"
 cd $SRC_DIR
 
 straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
+straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
 
 for strap in $straps; do
+	if [[ $filter == "--dry" ]];then
+		continue
+	fi
+
 	if echo "$strap" | grep -qv "$filter"; then
 		log "Not running: $strap"
 		continue
 	fi
-	execute ./$strap
+	if [[ $dry == "0" ]]; then 
+		execute ./$strap
+	else
+		log executing $strap
+	fi
 done
+
+for strap in $straps; do
+	if [[ $filter == "--dry" ]];then
+		continue
+	fi
+
+	if echo "$strap" | grep -qv "$filter"; then
+		log "Not running: $strap"
+		continue
+	fi
+	if [[ $dry == "0" ]]; then 
+		execute ./$strap
+	else
+		log executing $strap
+	fi
+done
+
+echo "Finished executing strap scripts..."
+echo "Copying dot-files"
+./config_push
