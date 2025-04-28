@@ -5,17 +5,17 @@
                        What is this??
                    ❓❓❓❓❓❓❓❓❓❓❓
 
-    A series of shellscripts to handle the provisioning of a new shell
-environment (with a focus on software development and tooling).
+    A series of shellscripts to handle the provisioning of a new shell 
+    environment (with a focus on software development and tooling).
 
                     🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩
                           The Meat!
                     🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩
-🔫 Strap 🔫
+    🔫 Strap 🔫
 
-    The brains of the operation.  Think of it as a mini "init.d" subsystem.
+        The brains of the operation.  Think of it as a mini "init.d" subsystem.
 
-All files in the ./straps directory will be executed by strap.
+    All files in the ./straps directory will be executed by strap.
 
 
 ```
