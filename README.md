@@ -1,4 +1,3 @@
-```
 🚀 Strap! 🎒 Pacman! ⋮ Dots!
 
 
@@ -17,10 +16,8 @@ environment (with a focus on software development and tooling).
     The brains of the operation.  Think of it as a mini "init.d" subsystem.
 
 All files in the ./straps directory will be executed by strap.
-```
-'
 
-'
+
 ```
 straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
 
