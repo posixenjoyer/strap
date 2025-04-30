@@ -15,10 +15,10 @@ done
 
 log() {
 	if [[ $dry == "1" ]]; then
-		echo "[DRY RUN]: $@"
-		echo "[DRY RUN]: copying files: ${@:3}"
+		echo "[DRY RUN]: $@" 1>&2
+		echo "[DRY RUN]: copying files: ${@:3}" 1>&2
 	else
-		echo "copying files: ${@:3}"
+		echo "copying files: ${@:3}" 1>&2
 	fi
 }
 

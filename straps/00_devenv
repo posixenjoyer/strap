@@ -16,6 +16,8 @@ packages=(
 	go
 	python3
 	gettext
+	tmux
+	parallel
 )
 
 for package in ${packages[@]};do
