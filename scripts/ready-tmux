@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 
-# TMUX session config goes here.
+# TMUX session initializer
+
+if [[ -x ./.ready-tmux ]]; then
+	./.ready-tmux
+elif [[ -x ~/.ready-tmux ]]; then
+	~/.ready-tmux	
+fi
+
+clear

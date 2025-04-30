@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+GITHUB_USER=posixenjoyer
+WORKING_DEV_PATH=$HOME/work/github.com/$GITHUB_USER
+
 packages=(
 	base-devel
 	cmake
@@ -12,12 +15,12 @@ packages=(
 	lua-lpeg
 	tree-sitter
 	ripgrep
-	git
 	go
 	python3
 	gettext
 	tmux
 	parallel
+	gh
 )
 
 for package in ${packages[@]};do
@@ -29,3 +32,9 @@ echo "Installing: $install"
 if sudo pacman -Syu $install; then
 	echo "[devenv] Setup failed.  Error Code: $?"
 fi
+
+if [[ ! -d "$WORKING_DEV_PATH" ]]; then
+	mkdir -p $WORKING_DEV_PATH
+fi
+
+# git clone https://github.com/junegunn/fzf.git $HOME/work/github.com/posixenjoy
