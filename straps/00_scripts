@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+# This allows us to granularly control the pulling of scripts based on file permission
+scripts=$(find scripts/ -executable -type f)
+
+
+if [[ ! -d "$HOME/.local/scripts" ]]; then
+	mkdir -p $HOME/.local/scripts
+fi
+
+if ! echo "$PATH" | grep -q ".local/scripts"; then
+	echo "AddToPath \$HOME/.local/scripts" >> $HOME/.bashrc
+fi
+
+for script in $scripts; do
+	cp $script $HOME/.local/scripts
+done

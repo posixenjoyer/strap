@@ -39,7 +39,6 @@ log "$SRC_DIR -- $filter"
 cd $SRC_DIR
 
 straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
-straps=$(find ./straps -maxdepth 1 -mindepth 1 -executable -type f)
 
 for strap in $straps; do
 	if [[ $filter == "--dry" ]];then
