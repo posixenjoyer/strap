@@ -98,7 +98,11 @@ copy_files() {
         		log rm -rf $to/$file
 		else
 			execute rm -rf $to/$file
-			cp $file $to
+			if [[ $file == ".zshrc" ]];then
+				cat $file >> ~/.zshrc
+			else
+				cp $file $to
+			fi
 		fi
 	done
 
