@@ -11,7 +11,7 @@ switch_to() {
 	if [[ -z "$TMUX" ]];then
 		tmux attach-session -t=$selected_name
 	else
-		tmux switch-session -t=$selected_name
+		tmux switch-client -t=$selected_name
 	fi
 }
 
