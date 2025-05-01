@@ -5,6 +5,8 @@ SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 filter="$1"
 dry="0"
 
+echo $SRC_DIR
+
 while [[ $# > 0 ]]; do
 	if [[ $1 == "--dry" ]]; then
 		dry="1"
@@ -56,22 +58,6 @@ for strap in $straps; do
 	fi
 done
 
-for strap in $straps; do
-	if [[ $filter == "--dry" ]];then
-		continue
-	fi
-
-	if echo "$strap" | grep -qv "$filter"; then
-		log "Not running: $strap"
-		continue
-	fi
-	if [[ $dry == "0" ]]; then 
-		execute ./$strap
-	else
-		log executing $strap
-	fi
-done
-
 echo "Finished executing strap scripts..."
 echo "Copying dot-files"
-./scripts/config_push
+./straps/scripts/config_push

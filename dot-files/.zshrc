@@ -16,10 +16,13 @@ AddToPath() {
 }
 AddToPath $HOME/.local/scripts
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=250000
 SAVEHIST=250000
 setopt SHARE_HISTORY
 
 [[ -f $HOME/.fzf.zsh ]] && source ~/.fzf.zsh
+bindkey '^r' fzf-history-widget
 GIT_USER=posixnejoyer

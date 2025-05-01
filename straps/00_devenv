@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 GITHUB_USER=$GIT_USER
 WORKING_DEV_PATH=$HOME/work/github.com/$GITHUB_USER
@@ -33,7 +33,7 @@ done
 
 echo "Installing: $install"
 
-if sudo pacman -Syu $install; then
+if sudo pacman -Syu --needed $install; then
 	echo "[devenv] Setup failed.  Error Code: $?"
 fi
 
@@ -41,7 +41,11 @@ if [[ ! -d "$WORKING_DEV_PATH" ]]; then
 	mkdir -p $WORKING_DEV_PATH
 fi
 
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -e s/robbyrussell/powerlevel10k/powerlevel10k/ ~/.zshrc
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - > install.sh
+chmod +x install.sh
+./install.sh --unattended
+rm install.sh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+sed -i 's/robbyrussell/powerlevel10k\/powerlevel10k/' ~/.zshrc
+cat ~/.zshrc
 source ~/.zshrc

@@ -91,16 +91,19 @@ copy_files() {
 	from=$1
 	to=$2
 
-	pushd $from > /dev/null 2>&1
+	pushd $from # > /dev/null 2>&1
 	files=$(find . -mindepth 1 -maxdepth 1 -type f)
 	for file in $files; do
 		if [[ $dry == "1" ]]; then
         		log rm -rf $to/$file
 		else
-			execute rm -rf $to/$file
-			if [[ $file == ".zshrc" ]];then
-				cat $file >> ~/.zshrc
+			echo "File: $file"
+			if [[ $file == "./.zshrc" ]];then
+				echo "Copying .zshrc... $to/.zshrc"
+				cat $file
+				cat $file >> $to/.zshrc
 			else
+				execute rm -rf $to/$file
 				cp $file $to
 			fi
 		fi
