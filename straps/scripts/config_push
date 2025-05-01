@@ -114,4 +114,4 @@ if [[ -v $XDG_CONFIG_HOME || -z "$XDG_CONFIG_HOME" ]];then
 fi
 copy_dir .config $XDG_CONFIG_HOME
 copy_files dot-files $HOME
-copy_file .sconfig $HOME
+# copy_file <one off config files> $HOME

@@ -22,3 +22,4 @@ SAVEHIST=250000
 setopt SHARE_HISTORY
 
 [[ -f $HOME/.fzf.zsh ]] && source ~/.fzf.zsh
+GIT_USER=posixnejoyer

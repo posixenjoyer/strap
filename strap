@@ -74,4 +74,4 @@ done
 
 echo "Finished executing strap scripts..."
 echo "Copying dot-files"
-./config_push
+./scripts/config_push
