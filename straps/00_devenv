@@ -41,4 +41,7 @@ if [[ ! -d "$WORKING_DEV_PATH" ]]; then
 	mkdir -p $WORKING_DEV_PATH
 fi
 
-# git clone https://github.com/junegunn/fzf.git $HOME/work/github.com/posixenjoy
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -e s/robbyrussell/powerlevel10k/powerlevel10k/ ~/.zshrc
+source ~/.zshrc
