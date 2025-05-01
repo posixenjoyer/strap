@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
 
-git clone https://github.com/junegunn/fzf.git $HOME/work/github.com/posixenjoy
-$HOME/work/github.com/posixenjoyer/fzf/install
+SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+
+echo $SRC_DIR
+
+if [[ ! -d $HOME/build ]]; then
+	mkdir -p $HOME/build/fzf
+fi
+
+if [[ ! -d $HOME/build/fzf ]]; then
+	git clone https://github.com/junegunn/fzf.git $HOME/build/fzf
+	if [[ ! -f $HOME/.fzf.zsh || ! $(which fzf) ]]; then
+		$HOME/build/fzf/install
+	fi
+fi
+
+find $SRC_DIR/usr.bin -type f -executable -exec sudo cp {} /usr/bin \;

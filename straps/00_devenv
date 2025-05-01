@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-GITHUB_USER=posixenjoyer
+GITHUB_USER=$GIT_USER
 WORKING_DEV_PATH=$HOME/work/github.com/$GITHUB_USER
+
+if [[ -f "$WORKING_DEV_PATH" ]]; then
+	mkdir -p $WORKING_DEV_PATH
+fi
 
 packages=(
 	base-devel

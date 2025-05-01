@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+
 SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 # This allows us to granularly control the pulling of scripts based on file permission
 scripts=$(find scripts/ -executable -type f)
 
+echo $SRC_DIR
 
 if [[ ! -d "$HOME/.local/scripts" ]]; then
 	mkdir -p $HOME/.local/scripts

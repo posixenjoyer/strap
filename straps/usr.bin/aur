@@ -1,0 +1,17 @@
+#!/bin/sh
+
+export x=$(pwd)
+cd ~/AUR
+
+if [[ $1 =~ "^https" ]]; then
+	git clone $1
+else
+	git clone https://aur.archlinux.org/$1.git
+fi
+
+cd $(/usr/bin/cleanaur $1)
+
+makepkg -sir
+git clean -dfx
+
+cd $X
