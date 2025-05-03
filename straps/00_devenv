@@ -24,16 +24,13 @@ packages=(
 	gettext
 	tmux
 	parallel
-	gh
+	github-cli
+	keychain
 )
-
-for package in ${packages[@]};do
-	install="$install $package"
-done
 
 echo "Installing: $install"
 
-if sudo pacman -Syu --needed $install; then
+if ! sudo pacman -Syu --noconfirm --needed ${packages[@]}; then
 	echo "[devenv] Setup failed.  Error Code: $?"
 fi
 

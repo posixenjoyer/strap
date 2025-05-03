@@ -17,4 +17,5 @@ setopt SHARE_HISTORY
 [[ -f $HOME/.fzf.zsh ]] && source ~/.fzf.zsh
 GIT_USER=posixnejoyer
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+eval $(keychain --eval --quiet id_ed25519_2)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
