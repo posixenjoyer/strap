@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - > install.sh
+chmod +x install.sh
+./install.sh --unattended
+rm install.sh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+sed -i 's/robbyrussell/powerlevel10k\/powerlevel10k/' ~/.zshrc
+chsh -s /usr/bin/zsh
+source ~/.zshrc

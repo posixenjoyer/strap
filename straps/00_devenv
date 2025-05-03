@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 GITHUB_USER=$GIT_USER
 WORKING_DEV_PATH=$HOME/work/github.com/$GITHUB_USER
@@ -27,6 +27,7 @@ packages=(
 	wget
 	github-cli
 	keychain
+	zsh
 )
 
 echo "Installing: $install"
@@ -39,11 +40,4 @@ if [[ ! -d "$WORKING_DEV_PATH" ]]; then
 	mkdir -p $WORKING_DEV_PATH
 fi
 
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - > install.sh
-chmod +x install.sh
-./install.sh --unattended
-rm install.sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-sed -i 's/robbyrussell/powerlevel10k\/powerlevel10k/' ~/.zshrc
-cat ~/.zshrc
-source ~/.zshrc
+./00_devenv_shell
