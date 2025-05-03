@@ -40,4 +40,4 @@ if [[ ! -d "$WORKING_DEV_PATH" ]]; then
 	mkdir -p $WORKING_DEV_PATH
 fi
 
-./00_devenv_shell
+./straps/00_devenv_shell
