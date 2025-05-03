@@ -44,8 +44,8 @@ copy_dir() {
 	from=$1
 	to=$2
 
-	if [[ ! -d $from ]]; then
-		mkdir -p $from
+	if [[ ! -d $to ]]; then
+		mkdir -p $to
 	fi
 
 	pushd $from > /dev/null 2>&1
@@ -58,6 +58,10 @@ copy_dir() {
         		log cp -r $dir $to/$dir
 		else
 			execute rm -rf $to/$dir
+			if [[ -d "$to/$dir" ]]; then
+				echo "Making $to/$dir"
+				mkdir -p $to/$dir
+			fi
         		execute cp -r $dir $to/$dir
 		fi
 	done
