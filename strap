@@ -5,9 +5,9 @@ SRC_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 filter="$1"
 dry="0"
 
-echo $SRC_DIR
+echo ${SRC_DIR}
 
-while [[ $# > 0 ]]; do
+while [[ $# -gt 0 ]]; do
 	if [[ $1 == "--dry" ]]; then
 		dry="1"
 	else

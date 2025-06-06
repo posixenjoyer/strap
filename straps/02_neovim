@@ -13,3 +13,8 @@ cd $HOME/build/neovim-0.11
 make clean
 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
 sudo make install
+sudo ln -s /usr/bin/nvim /usr/bin/vim
+if [[ -x /usr/bin/vi ]]; then
+	sudo mv /usr/bin/vi /usr/bin/vi.og
+	sudo ln -s /usr/bin/nvim /usr/bin/vi
+fi

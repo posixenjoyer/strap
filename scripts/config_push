@@ -104,10 +104,9 @@ copy_files() {
 			echo "File: $file"
 			if [[ $file == "./.zshrc" ]];then
 				echo "Copying .zshrc... $to/.zshrc"
-				cat $file
-				cat $file >> $to/.zshrc
+				cat "$file" >> "$to/.zshrc"
 			else
-				execute rm -rf $to/$file
+				execute rm -rf "$to/$file"
 				cp $file $to
 			fi
 		fi
