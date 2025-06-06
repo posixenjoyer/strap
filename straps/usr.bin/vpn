@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 
+# vpn v1.0
+# A simple script to toggle the connection state of a NordVPN connection.
+#
+
+# If we have options, process them
+# TODO: Add a command-line switch for selecting gateway region
+
 if [ $# -gt 0 ];
 then
     if [ $1 == "-s" ];
@@ -9,10 +16,7 @@ then
     fi
 fi
 
-nordvpn status | grep "Con" >& /dev/null
-
-if [ $? -gt 0 ];
-then
+if ! nordvpn status | grep "Con" >& /dev/null; then
 	nordvpn connect
 else
 	nordvpn disconnect
