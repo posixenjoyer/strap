@@ -13,6 +13,6 @@
                     🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩🥩
     🔫 Strap 🔫
 
-        The brains of the operation.  Think of it as a mini "init.d" subsystem.
+        The brains of the operation.  Think of it as a mini "init.d"-esque subsystem.
 
     All files in the ./straps directory will be executed by strap.
