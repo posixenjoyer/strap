@@ -20,24 +20,30 @@ packages=(
 	tree-sitter
 	ripgrep
 	go
-	python3
-	gettext
+	python
 	tmux
 	parallel
 	wget
 	github-cli
 	keychain
 	zsh
+	openssh
+	npm
 )
 
-echo "Installing: $install"
+sudo pacman -Syu --noconfirm
 
-if ! sudo pacman -Syu --noconfirm --needed ${packages[@]}; then
-	echo "[devenv] Setup failed.  Error Code: $?"
-fi
+for package in "${packages[@]}"; do
+	echo "Installing: $package"
+	if ! sudo pacman -S --noconfirm --needed "${package}"; then
+		failed_packages+="$package"
+		echo "[devenv] $package install failed:  Error Code: $?"
+	fi
+done
+
 
 if [[ ! -d "$WORKING_DEV_PATH" ]]; then
-	mkdir -p $WORKING_DEV_PATH
+	mkdir -p "$WORKING_DEV_PATH"
 fi
 
 ./straps/00_devenv_shell
